@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Work · Oblation Brian Simbeye</title>
+    <meta name="description" content="Brand identity and graphic design by Obrian Graphics: logos, brand guides, stationery, packaging, signage and social media.">
+    <meta property="og:image" content="images/share.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a href="index.html" class="brand">OBS<span>.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#projects">Work</a></li>
+                <li><a href="design.html" aria-current="page">Design</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="case-hero">
+            <div class="container">
+                <a href="index.html" class="back-link">← Home</a>
+                <p class="eyebrow">Obrian Graphics · Since 2020</p>
+                <h1>Design work</h1>
+                <p class="lede">
+                    Logos, brand guides and the everyday things a brand lives on: stationery, packaging, signage,
+                    apparel and social media. Select any image to see it full size.
+                </p>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="filter-bar chips" role="group" aria-label="Filter by brand">
+                    <button type="button" class="btn btn-ghost is-active" data-filter="all" aria-pressed="true">All work</button>
+                    <button type="button" class="btn btn-ghost" data-filter="unilia" aria-pressed="false">University of Livingstonia</button>
+                    <button type="button" class="btn btn-ghost" data-filter="im" aria-pressed="false">IM Collections</button>
+                </div>
+
+                <div class="gallery" id="gallery">
+                    <figure class="gallery-wide" data-brand="unilia">
+                        <a href="images/unilia/devices.webp" data-lightbox data-caption="University of Livingstonia · Responsive website"><img src="images/unilia/devices.webp" alt="University of Livingstonia website on desktop, tablet and phone" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Responsive website</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/brand-guide.webp" data-lightbox data-caption="IM Collections · Brand guide"><img src="images/im/brand-guide.webp" alt="IM Collections brand guide" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Brand guide</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/business-cards.webp" data-lightbox data-caption="University of Livingstonia · Business cards"><img src="images/unilia/business-cards.webp" alt="University of Livingstonia business cards" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Business cards</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/shopping-bags.webp" data-lightbox data-caption="IM Collections · Shopping bags"><img src="images/im/shopping-bags.webp" alt="IM Collections and IM Closet shopping bags" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Shopping bags</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/app.webp" data-lightbox data-caption="University of Livingstonia · Student app"><img src="images/unilia/app.webp" alt="University of Livingstonia student app screens" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Student app</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/hang-tags.webp" data-lightbox data-caption="IM Collections · Hang tags"><img src="images/im/hang-tags.webp" alt="IM Collections hang tags" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Hang tags</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/signage.webp" data-lightbox data-caption="University of Livingstonia · Campus signage"><img src="images/unilia/signage.webp" alt="University of Livingstonia campus sign" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Campus signage</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/business-cards.webp" data-lightbox data-caption="IM Collections · Business cards"><img src="images/im/business-cards.webp" alt="IM Collections business cards" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Business cards</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/letterhead.webp" data-lightbox data-caption="University of Livingstonia · Letterhead"><img src="images/unilia/letterhead.webp" alt="University of Livingstonia letterhead and envelope" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Letterhead</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/delivery-box.webp" data-lightbox data-caption="IM Collections · Delivery box"><img src="images/im/delivery-box.webp" alt="IM Collections delivery box" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Delivery box</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/id-card.webp" data-lightbox data-caption="University of Livingstonia · Student ID"><img src="images/unilia/id-card.webp" alt="University of Livingstonia student ID card" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Student ID</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/instagram.webp" data-lightbox data-caption="IM Collections · Instagram profile"><img src="images/im/instagram.webp" alt="IM Collections Instagram profile" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Instagram profile</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/social.webp" data-lightbox data-caption="University of Livingstonia · Social media"><img src="images/unilia/social.webp" alt="University of Livingstonia social media posts" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Social media</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/certificate.webp" data-lightbox data-caption="University of Livingstonia · Degree certificate"><img src="images/unilia/certificate.webp" alt="University of Livingstonia degree certificate" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Degree certificate</figcaption>
+                    </figure>
+                    <figure data-brand="unilia">
+                        <a href="images/unilia/tshirts.webp" data-lightbox data-caption="University of Livingstonia · Apparel"><img src="images/unilia/tshirts.webp" alt="University of Livingstonia t-shirts" loading="lazy" width="1600" height="1000"></a>
+                        <figcaption>University of Livingstonia · Apparel</figcaption>
+                    </figure>
+                    <figure data-brand="im">
+                        <a href="images/im/brand-guide-bow.webp" data-lightbox data-caption="IM Collections · Bow concept"><img src="images/im/brand-guide-bow.webp" alt="IM Collections Bow concept brand guide" loading="lazy" width="1600" height="1100"></a>
+                        <figcaption>IM Collections · Bow concept</figcaption>
+                    </figure>
+                </div>
+
+                <div class="section-foot">
+                    <a href="work/unilia.html" class="btn btn-ghost">University of Livingstonia case study</a>
+                    <a href="work/im-collections.html" class="btn btn-ghost">IM Collections case study</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact">
+            <div class="container">
+                <p class="eyebrow">Commissions</p>
+                <h2>Need a brand?</h2>
+                <p class="contact-lede">Tell me about your business and I'll come back with ideas.</p>
+                <div class="section-foot">
+                    <a href="https://wa.me/265994806786" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp +265 994 806 786</a>
+                    <a href="mailto:oblationsimbeye@gmail.com" class="btn btn-ghost">oblationsimbeye@gmail.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year">2026</span> Oblation Brian Simbeye</p>
+            <a href="#">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <dialog class="lightbox" aria-label="Image viewer">
+        <button class="lightbox-close" type="button" aria-label="Close">×</button>
+        <figure><img src="" alt=""><figcaption></figcaption></figure>
+    </dialog>
+
+    <script src="script.js"></script>
+    <script>
+        // Filter the gallery by brand
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const brand = button.dataset.filter;
+                filterButtons.forEach(b => {
+                    const active = b === button;
+                    b.classList.toggle('is-active', active);
+                    b.setAttribute('aria-pressed', String(active));
+                });
+                document.querySelectorAll('#gallery figure').forEach(fig => {
+                    fig.hidden = brand !== 'all' && fig.dataset.brand !== brand;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

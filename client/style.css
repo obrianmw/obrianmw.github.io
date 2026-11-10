@@ -733,14 +733,457 @@ a.contact-card:hover {
     color: var(--bg);
 }
 
+/* ---------- Mobile menu ---------- */
+.menu-toggle {
+    display: none;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.menu-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.nav-links a[aria-current="page"] {
+    color: var(--ink);
+    background: var(--bg-alt);
+}
+
+/* ---------- Work cards with images ---------- */
+.project-media {
+    display: block;
+    margin: -1.75rem -1.75rem 1.5rem;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--line);
+}
+
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project:hover .project-media img {
+    transform: scale(1.03);
+}
+
+.project-link {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.project-link::after {
+    content: ' →';
+}
+
+.project-feature .project-link {
+    color: color-mix(in srgb, var(--accent) 60%, var(--bg));
+}
+
+/* Whole card is clickable via its title link */
+.project {
+    position: relative;
+}
+
+.project h3 a {
+    text-decoration: none;
+}
+
+.project h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+}
+
+.section-foot {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* ---------- Case study pages ---------- */
+.case-hero {
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0 2.5rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--ink);
+}
+
+.case-hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    max-width: 16ch;
+    margin-bottom: 1.25rem;
+}
+
+.case-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem 2rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+}
+
+.case-meta dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+}
+
+.case-meta dd {
+    font-weight: 500;
+}
+
+.case-cover {
+    margin-top: 1rem;
+}
+
+.case-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.feature {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.feature h3 {
+    margin-bottom: 0.4rem;
+}
+
+.feature p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+}
+
+.flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    counter-reset: step;
+}
+
+.flow li {
+    counter-increment: step;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.92rem;
+}
+
+.flow li::before {
+    content: counter(step);
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+
+.case-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.case-stats div {
+    padding: 1.25rem 0;
+    border-top: 2px solid var(--accent);
+}
+
+.case-stats dd {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.case-stats dt {
+    margin-top: 0.4rem;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+}
+
+.case-stats div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.swatch {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+}
+
+.swatch span {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+}
+
+.swatch code {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+}
+
+.case-next {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.case-next a {
+    text-decoration: none;
+}
+
+.case-next .next-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+}
+
+.case-next .next-title::after {
+    content: ' →';
+    color: var(--accent);
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.gallery-wide {
+    grid-column: 1 / -1;
+}
+
+.gallery figure {
+    margin: 0;
+}
+
+.gallery a {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-alt);
+    cursor: zoom-in;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.gallery a:hover img {
+    transform: scale(1.02);
+}
+
+.gallery figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-bar .btn {
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--ink);
+}
+
+.filter-bar .btn.is-active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+}
+
+.gallery figure[hidden] {
+    display: none;
+}
+
+.contact .btn-ghost {
+    background: transparent;
+    color: var(--bg);
+    border-color: color-mix(in srgb, var(--bg) 30%, transparent);
+}
+
+.lightbox {
+    width: min(1400px, 94vw);
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--deep);
+    color: var(--deep-ink);
+    overflow: hidden;
+}
+
+.lightbox::backdrop {
+    background: rgba(5, 8, 12, 0.85);
+}
+
+.lightbox figure {
+    margin: 0;
+}
+
+.lightbox img {
+    width: 100%;
+    max-height: calc(92vh - 3.5rem);
+    object-fit: contain;
+}
+
+.lightbox figcaption {
+    padding: 0.9rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+/* ---------- Contact extras ---------- */
+.contact-card-primary {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-    .nav-links {
-        display: none;
+    .nav {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: grid;
     }
 
     .theme-toggle {
         margin-left: auto;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        padding: 0.75rem var(--gutter) 1rem;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 0.7rem 0.75rem;
+        font-size: 1rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .case-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
     }
 
     .hero-grid,
