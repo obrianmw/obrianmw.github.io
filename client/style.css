@@ -637,6 +637,35 @@ strong {
     background: var(--bg);
 }
 
+.chips li:has(a) {
+    padding: 0;
+}
+
+.chips a {
+    display: block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.chips a:hover,
+.chips a:focus-visible {
+    background: var(--accent);
+    color: var(--accent-ink);
+}
+
+.skill-group .skill-credit {
+    margin: 1.1rem 0 0;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+}
+
+.skill-credit a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 /* ---------- Education ---------- */
 .edu-list {
     border-top: 1px solid var(--line);
