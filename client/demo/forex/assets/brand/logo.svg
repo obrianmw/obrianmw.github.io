@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-label="Demo Bank">
+  <!-- Placeholder logo for presentations. Replace this file (or upload a logo in Admin → Branding). -->
+  <rect x="8" y="10" width="100" height="100" rx="24" fill="#1f5fbf"/>
+  <path d="M34 50h44l-10-10M82 70H38l10 10" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="92" cy="26" r="9" fill="#f2c14e"/>
+  <text x="128" y="62" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#14213d">Demo Bank</text>
+  <text x="130" y="92" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#e4572e">Your logo here</text>
+</svg>
