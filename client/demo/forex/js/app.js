@@ -135,7 +135,7 @@ const App = {
     if (hash !== '#/admin/branding') Brand.apply(S.branding || null);
     box.insertAdjacentHTML('afterbegin', Brand.toggleButton());
     document.getElementById('app-footer').innerHTML = `<span>© ${new Date().getFullYear()} <b>${U.esc(Brand.current.bankName)}</b> · ${U.esc(Brand.current.productName)}</span>
-      <span>${U.esc(Brand.current.tagline)} · Prototype – data stored in this browser only</span>`;
+      <span>${U.esc(Brand.current.tagline)} · Prototype – data stored in this browser only · names of people are made up or randomly generated</span>`;
   },
 
   advance(kind) {

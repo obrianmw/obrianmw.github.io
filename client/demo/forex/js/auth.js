@@ -290,7 +290,7 @@ const AuthViews = {
     const el = document.getElementById('auth');
     el.innerHTML = `<div class="auth-card"><div class="auth-brand"><img data-brand-logo src="${U.esc(Brand.current.logo)}" alt="${U.esc(Brand.current.bankName)}"></div>
       <div class="auth-body">${inner}</div></div>
-      <div class="auth-foot"><span class="af-text">${U.esc(Brand.current.productName)} · ${U.esc(Brand.current.bankName)} · Prototype</span>${Brand.toggleButton()}</div>`;
+      <div class="auth-foot"><span class="af-text">${U.esc(Brand.current.productName)} · ${U.esc(Brand.current.bankName)} · Prototype · Names of people are made up or randomly generated</span>${Brand.toggleButton()}</div>`;
     document.title = `Sign in · ${Brand.current.productName}`;
     return el;
   },
@@ -321,7 +321,7 @@ const AuthViews = {
       </form>
       <div style="text-align:center;margin-top:12px"><a href="#/forgot">Forgot password?</a></div>
       <details class="demo-box"><summary>Prototype demo accounts</summary>
-        <p class="muted" style="margin:6px 0">All demo users share the demo password <b class="mono">${U.esc(DEMO_PASSWORD)}</b> (also in the README). Users created by the admin get a temporary password and must change it at first sign-in.</p>
+        <p class="muted" style="margin:6px 0">All demo users share the demo password <b class="mono">${U.esc(DEMO_PASSWORD)}</b> (also in the README). Users created by the admin get a temporary password and must change it at first sign-in. The names of demo users, customers and beneficiaries are made up or randomly generated; any resemblance to real people is coincidental.</p>
         <table><tbody>${demo.map(u => `<tr class="click" data-login="${U.esc(u.username)}"><td>${U.esc(u.name)}<br><small class="mono">${U.esc(u.username)}</small></td><td><small>${ROLES[u.role]}<br>${U.esc(UI.branchName(u.branchId))}</small></td></tr>`).join('')}</tbody></table>
       </details>`);
     const form = el.querySelector('#lg-form');
