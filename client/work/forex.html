@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forex Applications System · Oblation Brian Simbeye</title>
-    <meta name="description" content="A shared, server-based system that takes every bank forex application from branch capture to settlement.">
+    <meta name="description" content="A shared, server-based forex applications system for commercial and central banks, from capture to settlement. Try the live demo.">
     <meta property="og:image" content="../images/share.jpg">
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 <body>
     <header class="site-header">
         <nav class="nav container">
-            <a href="../index.html" class="brand">OBS<span>.</span></a>
+            <a href="../index.html" class="brand" aria-label="Oblation Brian Simbeye, home"><span class="brand-name" aria-hidden="true"><span class="brand-short">OBS</span><span class="brand-full">Oblation Brian Simbeye</span></span><span class="brand-dot" aria-hidden="true">.</span></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="../index.html#about">About</a></li>
                 <li><a href="../index.html#experience">Experience</a></li>
@@ -48,15 +48,19 @@
                 <h1>Foreign Currency Applications System</h1>
                 <p class="lede">
                     One controlled workflow for every forex request, from capture to settlement. A shared,
-                    server-based system that takes each application through a four-eyes workflow across all
-                    branches, keeps clients and staff informed automatically, and records every step in a
-                    complete audit trail.
+                    server-based system that any bank can run: commercial banks with branch networks, and central
+                    banks overseeing exchange control. It takes each application through a four-eyes workflow,
+                    keeps clients and staff informed automatically, and records every step in a complete audit trail.
                 </p>
+                <div class="hero-actions" style="margin-top: 1.75rem;">
+                    <a href="../demo/forex/" class="btn btn-primary" target="_blank" rel="noopener">Try the live demo ↗</a>
+                    <a href="#demo" class="btn btn-ghost">How to use the demo</a>
+                </div>
                 <dl class="case-meta">
                     <div><dt>Role</dt><dd>Designer &amp; developer</dd></div>
-                    <div><dt>Built for</dt><dd>Centenary Bank, with a white-label edition</dd></div>
-                    <div><dt>Stack</dt><dd>Python server, SQLite; a Java edition too</dd></div>
-                    <div><dt>Editions</dt><dd>Prototype · Live · Universal</dd></div>
+                    <div><dt>Built for</dt><dd>Commercial and central banks</dd></div>
+                    <div><dt>Stack</dt><dd>Python or Java server, SQLite</dd></div>
+                    <div><dt>Editions</dt><dd>Prototype · Live · White-label</dd></div>
                 </dl>
             </div>
         </section>
@@ -66,24 +70,30 @@
                 <dl class="case-stats">
                     <div><dt>transaction types</dt><dd>9</dd></div>
                     <div><dt>user roles</dt><dd>5</dd></div>
-                    <div><dt>branches on one database</dt><dd>19</dd></div>
+                    <div><dt>branches on one shared database</dt><dd>Any</dd></div>
                     <div><dt>concurrent users tested</dt><dd>1,000</dd></div>
                 </dl>
 
                 <div class="section-head">
                     <p class="eyebrow">The problem</p>
-                    <h2>Forex requests passed through too many hands to track</h2>
+                    <h2>Forex requests pass through too many hands to track</h2>
                 </div>
                 <div class="prose">
                     <p>
-                        A foreign currency application moves from the branch inputter to an authoriser, Treasury and
-                        Exchange Control before it's funded and closed. Every hand-off was a chance for a document to go
-                        missing, a deadline to pass or a client to be left waiting without news.
+                        In any bank, a foreign currency application moves from the branch inputter to an authoriser,
+                        Treasury and Exchange Control before it's funded and closed. Every hand-off is a chance for a
+                        document to go missing, a deadline to pass or a client to be left waiting without news.
                     </p>
                     <p>
-                        I built one system that everyone works in. An application captured at a branch appears for the
-                        authoriser, Treasury and Exchange Control straight away, and documents uploaded at one PC open
-                        at any other, because they all live on the same central database.
+                        This system gives everyone one place to work. An application captured at a branch appears for
+                        the authoriser, Treasury and Exchange Control straight away, and documents uploaded at one PC
+                        open at any other, because they all live on the same central database.
+                    </p>
+                    <p>
+                        It fits the whole sector. <strong>Commercial banks</strong> run it across their branches, from
+                        capture to payment. <strong>Central banks</strong> can use the same workflow, roles and audit
+                        trail for exchange control oversight, reviewing and approving requests with every decision on
+                        record. A white-label edition takes each institution's own name, logo and colours.
                     </p>
                 </div>
             </div>
@@ -141,6 +151,30 @@
                     <div class="feature">
                         <h3>Operations ready</h3>
                         <p>End-of-day, month and year routines, encrypted backups, and clearly badged UAT and LIVE environments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="demo">
+            <div class="container split">
+                <div class="section-head">
+                    <p class="eyebrow">Try it yourself</p>
+                    <h2>A working demo in your browser</h2>
+                </div>
+                <div class="prose">
+                    <p>
+                        The demo is the Prototype edition, set up for a fictional "Demo Bank". It runs entirely in
+                        your browser with sample data, so nothing you enter is sent anywhere and you can't break anything.
+                    </p>
+                    <p>
+                        On the sign-in page, open <strong>Prototype demo accounts</strong> and sign in as any role with
+                        the shared password <strong><code>Demo@2026</code></strong>. For example, raise an application as
+                        an <strong>Inputter</strong>, then sign in as an <strong>Authoriser</strong>,
+                        <strong>Treasury Officer</strong> or <strong>Exchange Control</strong> to move it along.
+                    </p>
+                    <div class="section-foot">
+                        <a href="../demo/forex/" class="btn btn-primary" target="_blank" rel="noopener">Open the demo ↗</a>
                     </div>
                 </div>
             </div>

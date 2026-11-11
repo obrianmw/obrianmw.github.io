@@ -170,8 +170,52 @@ strong {
     letter-spacing: -0.02em;
 }
 
-.brand span {
+.brand {
+    display: inline-flex;
+    align-items: baseline;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.brand-dot {
     color: var(--accent);
+}
+
+/* Header name: "OBS" widens into the full name once the page is scrolled */
+.brand-name {
+    display: inline-grid;
+    overflow: hidden;
+}
+
+.brand-short,
+.brand-full {
+    grid-area: 1 / 1;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.brand-full {
+    max-width: 0;
+    opacity: 0;
+    transform: translateY(0.4em);
+    transition: max-width 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.35s ease 0.1s, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) 0.05s;
+}
+
+.site-header.is-scrolled .brand-short {
+    opacity: 0;
+    transform: translateY(-0.4em);
+}
+
+.site-header.is-scrolled .brand-full {
+    max-width: 14em;
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-short,
+    .brand-full {
+        transition: none;
+    }
 }
 
 .nav-links {
@@ -1132,6 +1176,71 @@ a.contact-card:hover {
     cursor: pointer;
 }
 
+/* Links inside a fully clickable card sit above the card's link layer */
+.inline-demo {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.project-feature .inline-demo {
+    color: color-mix(in srgb, var(--accent) 60%, var(--bg));
+}
+
+.card-contact {
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+}
+
+/* ---------- Quick contact (IM Collections) ---------- */
+.quick-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    background: #5b2c4f;
+    color: #fbf6f3;
+}
+
+.quick-contact-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e8c3bf;
+}
+
+.quick-contact-number {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.quick-contact-actions {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.quick-contact .btn-primary {
+    background: #c48b86;
+    color: #2b1226;
+}
+
+.quick-contact .btn-ghost {
+    background: transparent;
+    color: #fbf6f3;
+    border-color: rgba(251, 246, 243, 0.4);
+}
+
 /* ---------- Contact extras ---------- */
 .contact-card-primary {
     background: color-mix(in srgb, var(--accent) 22%, transparent);
@@ -1146,6 +1255,18 @@ a.contact-card:hover {
 
     .menu-toggle {
         display: grid;
+    }
+
+    .site-header.is-scrolled .brand {
+        font-size: 1.15rem;
+    }
+
+    .nav {
+        gap: 0.75rem;
+    }
+
+    .quick-contact-number {
+        font-size: 1.15rem;
     }
 
     .theme-toggle {

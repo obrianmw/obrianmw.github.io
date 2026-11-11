@@ -13,6 +13,14 @@ document.querySelector('.theme-toggle')?.addEventListener('click', () => {
     try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
 });
 
+// Header name: show the full name once the page has scrolled past the top
+const header = document.querySelector('.site-header');
+if (header) {
+    const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 60);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+}
+
 // Mobile menu
 const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
