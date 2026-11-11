@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livingstonia Concept Preview · Oblation Brian Simbeye</title>
+    <meta name="description" content="Interactive preview of the proposed University of Livingstonia website and student app concept, on desktop, tablet and phone.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a href="../index.html" class="brand" aria-label="Oblation Brian Simbeye, home"><span class="brand-name" aria-hidden="true"><span class="brand-short">OBS</span><span class="brand-full">Oblation Brian Simbeye</span></span><span class="brand-dot" aria-hidden="true">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects" aria-current="page">Work</a></li>
+                <li><a href="../design.html">Design</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="preview">
+        <div class="container">
+            <div class="preview-bar">
+                <div>
+                    <a href="unilia.html" class="back-link" style="margin-bottom: 0.4rem;">← University of Livingstonia concept</a>
+                    <h1 class="preview-title">Concept preview</h1>
+                </div>
+                <div class="device-switch" role="tablist" aria-label="Choose a device">
+                    <button type="button" role="tab" data-view="desktop">Desktop</button>
+                    <button type="button" role="tab" data-view="tablet">Tablet</button>
+                    <button type="button" role="tab" data-view="phone">Phone</button>
+                    <button type="button" role="tab" data-view="app">Student app</button>
+                </div>
+            </div>
+            <p class="preview-note">
+                Proposed concept only: not the official University of Livingstonia website, and not approved by the university.
+                <span class="preview-tip">Scroll and click inside the frame to use the site.</span>
+            </p>
+        </div>
+
+        <div class="stage" id="stage">
+            <div class="device" id="device">
+                <iframe id="frame" title="University of Livingstonia concept website" src="about:blank" loading="lazy"></iframe>
+                <div class="app-screens" id="app" hidden>
+                    <img src="../images/unilia-seal/app-screen-1.webp" alt="Student app: splash screen" width="780" height="1688">
+                    <img src="../images/unilia-seal/app-screen-2.webp" alt="Student app: home screen with timetable, results and fees" width="780" height="1688">
+                    <img src="../images/unilia-seal/app-screen-3.webp" alt="Student app: digital student ID" width="780" height="1688">
+                </div>
+            </div>
+        </div>
+        <div class="app-nav" id="app-nav" hidden>
+            <button type="button" data-step="-1" aria-label="Previous screen">‹ Previous</button>
+            <button type="button" data-step="1" aria-label="Next screen">Next ›</button>
+        </div>
+        <p class="container stage-caption" id="caption"></p>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        // Device sizes in CSS pixels; the frame is scaled down to fit the window
+        const DEVICES = {
+            desktop: { w: 1366, h: 820, label: 'Desktop · 1366 px wide', cls: 'is-desktop' },
+            tablet:  { w: 820,  h: 1180, label: 'Tablet · 820 px wide', cls: 'is-tablet' },
+            phone:   { w: 390,  h: 844, label: 'Phone · 390 px wide', cls: 'is-phone' },
+            app:     { w: 390,  h: 844, label: 'Student app · swipe or scroll sideways through the screens', cls: 'is-phone is-app' },
+        };
+        const stage = document.getElementById('stage');
+        const device = document.getElementById('device');
+        const frame = document.getElementById('frame');
+        const app = document.getElementById('app');
+        const caption = document.getElementById('caption');
+        let current = 'desktop';
+
+        function fit() {
+            const d = DEVICES[current];
+            const bezel = current === 'desktop' ? 24 : 28;
+            const availW = stage.clientWidth - 32;
+            const availH = Math.max(420, window.innerHeight - stage.getBoundingClientRect().top - 70);
+            const scale = Math.min(1, availW / (d.w + bezel), availH / (d.h + bezel));
+            device.style.width = (d.w * scale) + 'px';
+            device.style.height = (d.h * scale) + 'px';
+            frame.style.width = d.w + 'px';
+            frame.style.height = d.h + 'px';
+            frame.style.transform = `scale(${scale})`;
+        }
+
+        function show(view) {
+            current = DEVICES[view] ? view : 'desktop';
+            const d = DEVICES[current];
+            device.className = 'device ' + d.cls;
+            const isApp = current === 'app';
+            app.hidden = !isApp;
+            frame.hidden = isApp;
+            document.getElementById('app-nav').hidden = !isApp;
+            if (!isApp && frame.getAttribute('src') === 'about:blank') frame.src = '../demo/unilia-site/index.html';
+            document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.view === current)));
+            caption.textContent = d.label;
+            history.replaceState(null, '', '?view=' + current);
+            fit();
+        }
+
+        document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+        // Step through the app screens one at a time
+        document.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => {
+            const w = app.clientWidth;
+            const count = app.children.length;
+            const index = Math.min(count - 1, Math.max(0, Math.round(app.scrollLeft / w) + Number(b.dataset.step)));
+            app.scrollTo({ left: index * w, behavior: 'smooth' });
+            // If smooth scrolling isn't animated (some browsers, background tabs), jump there instead
+            setTimeout(() => { if (Math.round(app.scrollLeft / w) !== index) app.scrollLeft = index * w; }, 450);
+        }));
+        window.addEventListener('resize', fit);
+        show(new URLSearchParams(location.search).get('view') || 'desktop');
+    </script>
+</body>
+</html>

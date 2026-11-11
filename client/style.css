@@ -1294,6 +1294,220 @@ a.contact-card:hover {
     color: var(--warm);
 }
 
+/* ---------- Live preview links on mockups ---------- */
+.mockup-live {
+    position: relative;
+}
+
+.live-links {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translate(-50%, 8px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.45rem;
+    border-radius: 999px;
+    background: rgba(14, 22, 33, 0.82);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 2;
+}
+
+.mockup-live:hover .live-links,
+.mockup-live:focus-within .live-links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+/* Touch screens have no hover: keep the links visible */
+@media (hover: none) {
+    .live-links {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+    }
+}
+
+.live-links span {
+    align-self: center;
+    padding: 0 0.4rem 0 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c9d2de;
+}
+
+.live-links a {
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: #f6f3ee;
+    color: #17202e;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.live-links a:hover,
+.live-links a:focus-visible {
+    background: #e2a42b;
+}
+
+/* ---------- Concept preview page ---------- */
+.preview {
+    padding: 1.5rem 0 2rem;
+}
+
+.preview-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.preview-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.device-switch {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+}
+
+.device-switch button {
+    padding: 0.45rem 0.95rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: 600 0.88rem var(--font-body);
+    cursor: pointer;
+}
+
+.device-switch button[aria-selected="true"] {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+.preview-note {
+    margin: 0.9rem 0 1.25rem;
+    font-size: 0.88rem;
+    color: var(--warm);
+    font-weight: 500;
+}
+
+.preview-tip {
+    color: var(--ink-faint);
+    font-weight: 400;
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+}
+
+.device {
+    position: relative;
+    box-sizing: content-box;
+    overflow: hidden;
+    background: #0b0f15;
+    transition: width 0.35s ease, height 0.35s ease;
+}
+
+.device [hidden] {
+    display: none !important;
+}
+
+.device iframe {
+    display: block;
+    border: 0;
+    background: #fff;
+    transform-origin: 0 0;
+}
+
+.device.is-desktop {
+    border: 12px solid #0b0f15;
+    border-top-width: 26px;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.device.is-tablet {
+    border: 14px solid #0b0f15;
+    border-radius: 28px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.device.is-phone {
+    border: 12px solid #0b0f15;
+    border-radius: 42px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.app-screens {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.app-screens::-webkit-scrollbar {
+    display: none;
+}
+
+.app-screens img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+
+.app-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.app-nav[hidden] {
+    display: none;
+}
+
+.app-nav button {
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    font: 600 0.88rem var(--font-body);
+    cursor: pointer;
+}
+
+.stage-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+}
+
 /* ---------- Demo guide ---------- */
 .table-wrap {
     overflow-x: auto;
