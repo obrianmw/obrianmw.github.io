@@ -1270,6 +1270,30 @@ a.contact-card:hover {
     border-color: rgba(251, 246, 243, 0.4);
 }
 
+/* ---------- Caution notes (speculative concepts) ---------- */
+.caution {
+    margin-top: 1.75rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--warm) 55%, transparent);
+    border-left: 4px solid var(--warm);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--warm) 10%, var(--surface));
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 52rem;
+}
+
+.caution strong {
+    color: var(--ink);
+}
+
+.card-caution {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--warm);
+}
+
 /* ---------- Demo guide ---------- */
 .table-wrap {
     overflow-x: auto;
