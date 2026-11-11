@@ -51,6 +51,10 @@
                     events, and the system emails the customer. Staff also use it for monthly statements, service
                     messages and marketing campaigns to mailing lists.
                 </p>
+                <div class="hero-actions" style="margin-top: 1.75rem;">
+                    <a href="https://bank-notifications-demo.onrender.com/" class="btn btn-primary" target="_blank" rel="noopener">Try the live demo ↗</a>
+                    <a href="#demo" class="btn btn-ghost">How to use the demo</a>
+                </div>
                 <dl class="case-meta">
                     <div><dt>Role</dt><dd>Designer &amp; developer</dd></div>
                     <div><dt>Stack</dt><dd>Python web app, SMTP or Amazon SES</dd></div>
@@ -112,6 +116,42 @@
                         <h3>Security &amp; branding</h3>
                         <p>Argon2 passwords, lockout, CSRF protection, masked account numbers, and a branding panel for logo, colours and email look.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="demo">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Try it yourself</p>
+                    <h2>A live demo with sample data</h2>
+                </div>
+                <div class="prose" style="max-width: 46rem; margin-bottom: 1.5rem;">
+                    <p>
+                        The demo runs for a fictional "Demo Bank" with about 150 sample customers and their
+                        transactions. Emails are only written to <strong>Sent emails</strong>, never actually sent, and
+                        the demo resets to its sample data whenever it restarts. It's on a free server that sleeps when
+                        nobody is using it, so the first visit can take about a minute to load.
+                    </p>
+                    <p>
+                        Every account uses the password <strong><code>Demo@2026</code></strong>. The sign-ins are also
+                        listed on the demo's login page.
+                    </p>
+                </div>
+                <div class="table-wrap">
+                    <table class="guide-table">
+                        <thead><tr><th>Role</th><th>Sign in with</th><th>Try this</th></tr></thead>
+                        <tbody>
+                            <tr><td>Operations Officer</td><td><code>ops.officer@examplebank.test</code></td><td>Browse customers and core banking activity, then open <strong>Sent emails</strong> to read the alerts customers received</td></tr>
+                            <tr><td>Operations Officer</td><td><code>ops.supervisor@examplebank.test</code></td><td>Send a service message and set up a monthly statement schedule</td></tr>
+                            <tr><td>Marketing Officer</td><td><code>marketing.officer@examplebank.test</code></td><td>Manage mailing lists and start a <strong>New campaign</strong>; unsubscribed contacts are skipped</td></tr>
+                            <tr><td>Auditor</td><td><code>auditor@examplebank.test</code></td><td>Review the <strong>Audit log</strong> and filtered reports, read-only</td></tr>
+                            <tr><td>Administrator</td><td><code>admin@examplebank.test</code></td><td>Users, roles &amp; permissions, API keys and <strong>Branding</strong> (bank name, logo, colours, email look)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section-foot">
+                    <a href="https://bank-notifications-demo.onrender.com/" class="btn btn-primary" target="_blank" rel="noopener">Open the demo ↗</a>
                 </div>
             </div>
         </section>
