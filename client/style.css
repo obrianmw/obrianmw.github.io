@@ -1287,6 +1287,24 @@ a.contact-card:hover {
     color: var(--ink);
 }
 
+.names-note {
+    margin: 2rem 0 0;
+    padding: 0.85rem 1.1rem;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    max-width: 52rem;
+}
+
+main > .container > .names-note {
+    margin-bottom: 2.5rem;
+}
+
+.names-note strong {
+    color: var(--ink-soft);
+}
+
 .card-caution {
     margin-top: 0.75rem;
     font-size: 0.85rem;
