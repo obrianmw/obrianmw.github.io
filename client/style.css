@@ -1241,6 +1241,113 @@ a.contact-card:hover {
     border-color: rgba(251, 246, 243, 0.4);
 }
 
+/* ---------- Demo guide ---------- */
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+}
+
+.guide-table th,
+.guide-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+}
+
+.guide-table th {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: var(--bg-alt);
+}
+
+.guide-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.guide-table code {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.guide-steps {
+    display: grid;
+    gap: 1rem;
+    counter-reset: guide;
+}
+
+.guide-steps li {
+    counter-increment: guide;
+    position: relative;
+    padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.guide-steps li::before {
+    content: counter(guide);
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.guide-steps h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.guide-steps h3 span {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.guide-steps p {
+    color: var(--ink-soft);
+}
+
+.guide-steps p + p {
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 600px) {
+    .guide-steps li {
+        padding: 1.25rem 1.25rem 1.25rem 3.75rem;
+    }
+
+    .guide-steps li::before {
+        left: 1rem;
+        top: 1.25rem;
+    }
+}
+
 /* ---------- Contact extras ---------- */
 .contact-card-primary {
     background: color-mix(in srgb, var(--accent) 22%, transparent);

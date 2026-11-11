@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Demo Guide · Oblation Brian Simbeye</title>
+    <meta name="description" content="How to use the Forex Applications System demo: the six demo accounts and a step-by-step walkthrough of one application.">
+    <meta property="og:image" content="../images/share.jpg">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a href="../index.html" class="brand" aria-label="Oblation Brian Simbeye, home"><span class="brand-name" aria-hidden="true"><span class="brand-short">OBS</span><span class="brand-full">Oblation Brian Simbeye</span></span><span class="brand-dot" aria-hidden="true">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects" aria-current="page">Work</a></li>
+                <li><a href="../design.html">Design</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="case-hero">
+            <div class="container">
+                <a href="forex.html" class="back-link">← Forex Applications System</a>
+                <p class="eyebrow">Demo user manual</p>
+                <h1>How to use the Forex demo</h1>
+                <p class="lede">
+                    The demo is the Prototype edition of the Forex Applications System, set up for a fictional
+                    "Demo Bank". Follow one application from the branch to payment by signing in as each role in turn.
+                </p>
+                <div class="hero-actions" style="margin-top: 1.75rem;">
+                    <a href="../demo/forex/" class="btn btn-primary" target="_blank" rel="noopener">Open the demo ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container split">
+                <div class="section-head">
+                    <p class="eyebrow">1 · Before you start</p>
+                    <h2>Safe to explore</h2>
+                </div>
+                <div class="prose">
+                    <p>
+                        Everything runs in your own browser. The customers and accounts are simulated, nothing you
+                        type is sent to a server, and no real emails or text messages go out. Messages the system
+                        would send appear under <strong>Outgoing messages</strong> instead.
+                    </p>
+                    <p>
+                        Your changes stay in this browser until you reset them. To start again, sign in as an
+                        administrator and choose <strong>Reset to sample data</strong> on the <strong>Demo data</strong> page.
+                    </p>
+                    <p>
+                        The demo has its own clock. Use the <strong>System date</strong> controls in the top bar
+                        (<strong>+1h</strong>, <strong>+1d</strong>, <strong>+7d</strong>) to move time forward and
+                        watch deadlines, reminders and the 16:00 funding cut-off take effect.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">2 · Demo accounts</p>
+                    <h2>Six users, one password</h2>
+                </div>
+                <p class="prose" style="max-width: 46rem; margin-bottom: 1.5rem;">
+                    <span style="color: var(--ink-soft);">Every account uses the password
+                    <strong><code>Demo@2026</code></strong>. On the sign-in page, open <strong>Prototype demo accounts</strong>
+                    to see the list, then type the email address of the role you want.</span>
+                </p>
+                <div class="table-wrap">
+                    <table class="guide-table">
+                        <thead>
+                            <tr><th>Role</th><th>Name</th><th>Sign in with</th><th>What they do</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Inputter</td><td>Grace Banda</td><td><code>grace.banda@demobank.example</code></td><td>Captures applications at the Blantyre branch</td></tr>
+                            <tr><td>Authoriser</td><td>James Mwale</td><td><code>james.mwale@demobank.example</code></td><td>Approves the branch's applications (four eyes)</td></tr>
+                            <tr><td>Treasury Officer</td><td>Thandiwe Nkhoma</td><td><code>thandiwe.nkhoma@demobank.example</code></td><td>Allocates foreign currency and sets rates</td></tr>
+                            <tr><td>Exchange Control</td><td>Mphatso Gondwe</td><td><code>mphatso.gondwe@demobank.example</code></td><td>Processes payments and reconciliations</td></tr>
+                            <tr><td>Administrator</td><td>System Administrator</td><td><code>it.admin@demobank.example</code></td><td>Users, access rights, settings, branding</td></tr>
+                            <tr><td>Administrator</td><td>Backup Administrator</td><td><code>it.admin2@demobank.example</code></td><td>Second admin, so changes can be approved by another person</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">3 · Walkthrough</p>
+                    <h2>Take one application from start to finish</h2>
+                </div>
+                <ol class="guide-steps">
+                    <li>
+                        <h3>Capture it <span>Inputter · Grace Banda</span></h3>
+                        <p>Click <strong>+ New application</strong>. Enter an account number, or a customer number and
+                        <strong>Find the customer's accounts</strong>, then pick the account. Name, account type and balance
+                        come from the simulated core banking system.</p>
+                        <p>Choose the transaction type, amount and currency, fill in the beneficiary and upload the
+                        documents the type needs (any PDF works in the demo). Then <strong>Submit to authoriser</strong>,
+                        or <strong>Save as draft</strong> to finish later.</p>
+                    </li>
+                    <li>
+                        <h3>Authorise it <span>Authoriser · James Mwale</span></h3>
+                        <p>Sign out, sign in as James and open <strong>Pending authorisation</strong>. Review the
+                        application and add a comment, then <strong>Authorise</strong> it, return it to the inputter to
+                        correct, or <strong>Reject &amp; advise client</strong>. An authoriser can never approve an
+                        application they captured themselves.</p>
+                    </li>
+                    <li>
+                        <h3>Allocate the currency <span>Treasury · Thandiwe Nkhoma</span></h3>
+                        <p>Open <strong>Awaiting allocation</strong> and click <strong>Allocate forex</strong>. Allocate in
+                        full or in part, with the rate (MWK per unit) and a cross rate if the currency differs.</p>
+                        <p>If the client's account already holds enough money, it is debited straight away. Otherwise the
+                        client must fund it by 16:00, and the branch or Exchange Control marks it funded once the money
+                        is in. Move the system date past 16:00 to see an unfunded allocation forfeited.</p>
+                    </li>
+                    <li>
+                        <h3>Pay it <span>Exchange Control · Mphatso Gondwe</span></h3>
+                        <p>Open the funded application and record the payment as <strong>Fully paid</strong> or
+                        <strong>Partly paid</strong>. The client, inputter and branch are notified, and a full payment
+                        closes the record. A payment can also be reversed with a reason, which reopens it.</p>
+                    </li>
+                    <li>
+                        <h3>Reconcile advance payments <span>Inputter, Authoriser, Exchange Control</span></h3>
+                        <p>Advance payments for imports must be reconciled within 90 days. The inputter uploads the customs
+                        entry and final invoice, the authoriser approves, and Exchange Control marks it reconciled.
+                        Until then, new applications from that client are blocked.</p>
+                    </li>
+                    <li>
+                        <h3>Look around <span>Everyone</span></h3>
+                        <p>Every role has a dashboard; click any chart or number to see the applications behind it.
+                        Reports cover payments, processed and all transactions, demand, client history, reconciliation
+                        and the audit trail, and export to Excel, Word, PDF, CSV or print. Open the ✉ inbox to see the
+                        emails and texts the system would have sent.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container split">
+                <div class="section-head">
+                    <p class="eyebrow">4 · Administrators</p>
+                    <h2>Running the system</h2>
+                </div>
+                <div class="prose">
+                    <p>
+                        Sign in as <strong>it.admin@demobank.example</strong> to manage users and access rights,
+                        branches, message templates, rules and rates (travel allowance, funding cut-off, reconciliation
+                        days), reference number formats and branding: the bank's name, logo and colours.
+                    </p>
+                    <p>
+                        With two administrators, adding or changing a user creates a request that the
+                        <em>other</em> administrator must approve. Try it: make a change as the System Administrator,
+                        then sign in as the Backup Administrator to approve it from the dashboard.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">5 · Reference</p>
+                    <h2>What each status means</h2>
+                </div>
+                <div class="table-wrap">
+                    <table class="guide-table">
+                        <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+                        <tbody>
+                            <tr><td>Draft</td><td>Saved but not submitted</td></tr>
+                            <tr><td>Pending authorisation</td><td>Waiting for an authoriser of the branch</td></tr>
+                            <tr><td>Returned to inputter</td><td>Sent back to the inputter to correct</td></tr>
+                            <tr><td>Rejected – client advised</td><td>Rejected, and the client told why</td></tr>
+                            <tr><td>Awaiting allocation</td><td>Authorised, waiting for Treasury</td></tr>
+                            <tr><td>Allocated – awaiting funding</td><td>The client must fund the account by 16:00</td></tr>
+                            <tr><td>Funded – ready to process</td><td>Exchange Control can pay</td></tr>
+                            <tr><td>Partly paid</td><td>Part paid; the balance needs a further payment</td></tr>
+                            <tr><td>Payment reversed – action needed</td><td>Pay again, change supplier or close</td></tr>
+                            <tr><td>Closed – paid</td><td>Paid in full</td></tr>
+                            <tr><td>Closed – at client's request</td><td>Closed as the client asked; funded money refunded</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subhead">Document rules by transaction type</h3>
+                <div class="table-wrap">
+                    <table class="guide-table">
+                        <thead><tr><th>Type</th><th>What's needed</th></tr></thead>
+                        <tbody>
+                            <tr><td>Advance payment (imports)</td><td>Invoice with amount and date; reconcile within 90 days of full payment</td></tr>
+                            <tr><td>Freight / Open account</td><td>Invoice with amount and date</td></tr>
+                            <tr><td>Gifts</td><td>Beneficiary details and relationship</td></tr>
+                            <tr><td>Student fees</td><td>Admission letter, fees structure, passport, visa or permit, period of study</td></tr>
+                            <tr><td>Maintenance fee</td><td>Supporting document and proof of payment</td></tr>
+                            <tr><td>Cash / Cash passport (travel)</td><td>Passport, travel dates, ticket above USD 3,000; at most USD 500 per day</td></tr>
+                            <tr><td>Medical procedure (travel)</td><td>Passport, doctor's referral, medical invoice and ticket</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-foot">
+                    <a href="../demo/forex/" class="btn btn-primary" target="_blank" rel="noopener">Open the demo ↗</a>
+                    <a href="forex.html" class="btn btn-ghost">Back to the case study</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year">2026</span> Oblation Brian Simbeye</p>
+            <a href="#">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

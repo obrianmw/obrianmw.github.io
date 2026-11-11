@@ -8,11 +8,7 @@ const DEMO_PASSWORD = 'Demo@2026';
 /* Demo users. Authorisers sit in a branch and can only authorise that branch's applications. */
 const SEED_USERS = [
   { id: 'u_grace',   name: 'Grace Banda',          role: 'INPUTTER',   branchId: 'br_bt',  email: 'grace.banda@demobank.example',     active: true },
-  { id: 'u_chiko',   name: 'Chikondi Phiri',       role: 'INPUTTER',   branchId: 'br_llw', email: 'chikondi.phiri@demobank.example',  active: true },
-  { id: 'u_tiya',    name: 'Tiyamike Kalua',       role: 'INPUTTER',   branchId: 'br_mz',  email: 'tiyamike.kalua@demobank.example',  active: true },
   { id: 'u_james',   name: 'James Mwale',          role: 'AUTHORISER', branchId: 'br_bt',  email: 'james.mwale@demobank.example',     active: true },
-  { id: 'u_chisomo', name: 'Chisomo Nyirenda',     role: 'AUTHORISER', branchId: 'br_llw', email: 'chisomo.nyirenda@demobank.example', active: true },
-  { id: 'u_kettie',  name: 'Kettie Mhango',        role: 'AUTHORISER', branchId: 'br_mz',  email: 'kettie.mhango@demobank.example',   active: true },
   { id: 'u_thandi',  name: 'Thandiwe Nkhoma',      role: 'TREASURY',   branchId: 'br_ho',  email: 'thandiwe.nkhoma@demobank.example', active: true },
   { id: 'u_mphatso', name: 'Mphatso Gondwe',       role: 'EC',         branchId: 'br_ho',  email: 'mphatso.gondwe@demobank.example',  active: true },
   { id: 'u_admin',   name: 'System Administrator', role: 'ADMIN',      branchId: 'br_ho',  email: 'it.admin@demobank.example',        active: true },
@@ -21,7 +17,7 @@ const SEED_USERS = [
 ];
 
 const Store = {
-  KEY: 'cbm-forex-state-v1',
+  KEY: 'cbm-forex-state-v2',
   state: null,
   suspended: false,   // true while the test-data generator builds data in memory
 
@@ -221,17 +217,17 @@ const Seed = {
 
     // 2. Awaiting allocation – cash travel (drives weekly/daily travel notices)
     const a2 = mk({
-      createdAt: at(8, 11), createdBy: 'u_chiko', branchId: 'br_llw', status: 'AWAITING_ALLOCATION',
+      createdAt: at(8, 11), createdBy: 'u_grace', branchId: 'br_bt', status: 'AWAITING_ALLOCATION',
       customer: { name: 'Ruth Chisale', account: '0021007781', accountType: 'LCY', address: 'Area 47, Lilongwe', email: 'ruth.chisale@mail.test', phone: '+265 888 410 221' },
       type: 'CASH', balance: 6100000, balanceCurrency: 'MWK', amount: 2500, currency: 'USD',
       beneficiary: { name: 'Ruth Chisale', address: 'Area 47, Lilongwe', country: 'United Arab Emirates', product: 'Business travel allowance' },
       details: { travellerName: 'Ruth Chisale', passportNumber: 'MA1234567', travelDate: day(9), returnDate: day(13) },
     });
-    a2.documents.push(doc('PASSPORT', 'Passport_Ruth_Chisale.pdf', a2.createdAt, 'u_chiko'));
-    a2.submittedAt = at(8, 11, 30); a2.authorisedAt = at(6, 14); a2.authorisedBy = 'u_chisomo';
-    log(a2, a2.submittedAt, 'u_chiko', 'SUBMITTED', 'Submitted for authorisation');
-    log(a2, a2.authorisedAt, 'u_chisomo', 'AUTHORISED', 'Authorised');
-    comment(a2, a2.authorisedAt, 'u_chisomo', 'Authorised', 'Documents in order. 5 days x USD 500 = USD 2,500.');
+    a2.documents.push(doc('PASSPORT', 'Passport_Ruth_Chisale.pdf', a2.createdAt, 'u_grace'));
+    a2.submittedAt = at(8, 11, 30); a2.authorisedAt = at(6, 14); a2.authorisedBy = 'u_james';
+    log(a2, a2.submittedAt, 'u_grace', 'SUBMITTED', 'Submitted for authorisation');
+    log(a2, a2.authorisedAt, 'u_james', 'AUTHORISED', 'Authorised');
+    comment(a2, a2.authorisedAt, 'u_james', 'Authorised', 'Documents in order. 5 days x USD 500 = USD 2,500.');
 
     // 3. Allocated, awaiting funding by 16:00 today – student fees
     const a3 = mk({
@@ -254,21 +250,21 @@ const Seed = {
 
     // 4. Advance payment, fully paid ~78 days ago – reconciliation due soon
     const a4 = mk({
-      createdAt: at(82, 9), createdBy: 'u_tiya', branchId: 'br_mz', status: 'CLOSED',
+      createdAt: at(82, 9), createdBy: 'u_grace', branchId: 'br_bt', status: 'CLOSED',
       customer: { name: 'Nkhata Bay Agro Traders', account: '0041000237', accountType: 'FCY', address: 'Katoto, Mzuzu', email: 'info@nbagro.test', phone: '+265 997 333 120' },
       type: 'ADVANCE', balance: 64000, balanceCurrency: 'USD', amount: 48000, currency: 'USD',
       beneficiary: { name: 'Shandong Agri Machinery Co.', address: 'Jinan, Shandong', country: 'China', product: 'Maize sheller machines (advance 40%)' },
       details: { invoiceNumber: 'PI-2026-0441' },
     });
-    a4.documents.push(doc('INVOICE', 'Proforma_PI-2026-0441.pdf', a4.createdAt, 'u_tiya'));
-    a4.submittedAt = at(82, 10); a4.authorisedAt = at(81, 9); a4.authorisedBy = 'u_kettie';
+    a4.documents.push(doc('INVOICE', 'Proforma_PI-2026-0441.pdf', a4.createdAt, 'u_grace'));
+    a4.submittedAt = at(82, 10); a4.authorisedAt = at(81, 9); a4.authorisedBy = 'u_james';
     a4.ec = { recommendation: 'Recommended', note: 'Advance for capital goods; reconcile within 90 days.', by: 'u_mphatso', at: at(81, 11) };
     a4.allocations.push({ id: U.uid('al'), amount: 48000, rate: 1751, crossRate: null, valueDate: day(-79), note: 'Funded from FCY account – rate for MWK reporting only', at: at(79, 9), by: 'u_thandi', deadline: at(79, 16), status: 'FUNDED', fundedAt: at(79, 10), paid: 48000 });
     a4.payments.push({ id: U.uid('pay'), amount: 48000, rate: 1751, mwk: 48000 * 1751, reference: 'MT103-41877', correspondentId: 'cb_1', valueDate: day(-78), at: at(78, 11), by: 'u_mphatso', outcome: 'FULL', comment: '' });
     a4.closedAt = at(78, 11);
     a4.recon = { status: 'PENDING', dueDate: day(12) };
-    log(a4, a4.submittedAt, 'u_tiya', 'SUBMITTED', 'Submitted for authorisation');
-    log(a4, a4.authorisedAt, 'u_kettie', 'AUTHORISED', 'Authorised');
+    log(a4, a4.submittedAt, 'u_grace', 'SUBMITTED', 'Submitted for authorisation');
+    log(a4, a4.authorisedAt, 'u_james', 'AUTHORISED', 'Authorised');
     log(a4, at(79, 9), 'u_thandi', 'ALLOCATED', 'USD 48,000.00 at 1,751.0000');
     log(a4, at(78, 11), 'u_mphatso', 'PAYMENT_RECORDED', 'USD 48,000.00 – fully paid, closed');
 
@@ -397,10 +393,10 @@ const Seed = {
     };
 
     // 10. With the authoriser – Lilongwe client, documents submitted yesterday.
-    const a10 = adv({ paidDays: 46, branchId: 'br_llw', inputter: 'u_chiko', authoriser: 'u_chisomo', amount: 35000, rate: 1752.4, balance: 70000000, swift: 'MT103-42210', invoice: 'PI-LL-3302', invoiceAmount: 87500,
+    const a10 = adv({ paidDays: 46, branchId: 'br_bt', inputter: 'u_grace', authoriser: 'u_james', amount: 35000, rate: 1752.4, balance: 70000000, swift: 'MT103-42210', invoice: 'PI-LL-3302', invoiceAmount: 87500,
       customer: { name: 'Kanengo Grain Millers Ltd', account: '0021004410', accountType: 'LCY', address: 'Kanengo Industrial Area, Lilongwe', email: 'finance@kanengomillers.test', phone: '+265 999 404 118', idType: 'CERT_INCORPORATION', idNumber: 'COMP-2009-1180' },
       beneficiary: { name: 'Bühler Industrial (Wuxi) Co.', address: 'Wuxi, Jiangsu', country: 'China', product: 'Roller mill spare parts (advance 40%)' } });
-    submit(a10, 1, 'u_chiko', 'br_llw', 'Client brought the bill of entry and final invoice.');
+    submit(a10, 1, 'u_grace', 'br_bt', 'Client brought the bill of entry and final invoice.');
 
     // 11. With Exchange Control – Blantyre client, authorised two days ago.
     const a11 = adv({ paidDays: 74, branchId: 'br_bt', inputter: 'u_grace', authoriser: 'u_james', amount: 18500, rate: 1754.9, balance: 41000000, swift: 'MT103-41622', invoice: 'PI-BT-9054', invoiceAmount: 18500,
@@ -410,14 +406,14 @@ const Seed = {
     authorise(a11, 2, 'u_james');
 
     // 12. Returned to the inputter – the authoriser wants a certified bill of entry.
-    const a12 = adv({ paidDays: 63, branchId: 'br_mz', inputter: 'u_tiya', authoriser: 'u_kettie', amount: 9800, rate: 1753.1, balance: 19500000, swift: 'MT103-41760', invoice: 'PI-MZ-1172', invoiceAmount: 24500,
+    const a12 = adv({ paidDays: 63, branchId: 'br_bt', inputter: 'u_grace', authoriser: 'u_james', amount: 9800, rate: 1753.1, balance: 19500000, swift: 'MT103-41760', invoice: 'PI-MZ-1172', invoiceAmount: 24500,
       customer: { name: 'Viphya Timber Products', account: '0041003391', accountType: 'LCY', address: 'Chibavi, Mzuzu', email: 'viphyatimber@mail.test', phone: '+265 995 339 100', idType: 'BUSINESS_REG', idNumber: 'BRN-MZ-31877' },
       beneficiary: { name: 'Durban Saw Equipment (Pty) Ltd', address: 'Pinetown, Durban', country: 'South Africa', product: 'Sawmill blades (advance 40%)' } });
-    submit(a12, 6, 'u_tiya', 'br_mz');
-    rstep(a12, at(5, 15), 'u_kettie', 'RETURNED', 'Rejected by authoriser – returned to inputter', 'The bill of entry is a photocopy. Please obtain a copy certified by MRA.', ['RECON_RETURNED', 'Reconciliation returned to inputter: The bill of entry is a photocopy. Please obtain a copy certified by MRA.']);
+    submit(a12, 6, 'u_grace', 'br_bt');
+    rstep(a12, at(5, 15), 'u_james', 'RETURNED', 'Rejected by authoriser – returned to inputter', 'The bill of entry is a photocopy. Please obtain a copy certified by MRA.', ['RECON_RETURNED', 'Reconciliation returned to inputter: The bill of entry is a photocopy. Please obtain a copy certified by MRA.']);
 
     // 13. Declined by Exchange Control and the client alerted – Lilongwe client whose documents were brought to Blantyre (overdue).
-    const a13 = adv({ paidDays: 97, branchId: 'br_llw', inputter: 'u_chiko', authoriser: 'u_chisomo', amount: 27000, rate: 1750.2, balance: 52000000, swift: 'MT103-40488', invoice: 'PI-LL-2871', invoiceAmount: 27000,
+    const a13 = adv({ paidDays: 97, branchId: 'br_bt', inputter: 'u_grace', authoriser: 'u_james', amount: 27000, rate: 1750.2, balance: 52000000, swift: 'MT103-40488', invoice: 'PI-LL-2871', invoiceAmount: 27000,
       customer: { name: 'Area 25 Auto Spares', account: '0021008856', accountType: 'LCY', address: 'Area 25, Lilongwe', email: 'area25spares@mail.test', phone: '+265 884 885 600', idType: 'BUSINESS_REG', idNumber: 'BRN-LL-44120' },
       beneficiary: { name: 'Dubai Auto Parts Trading LLC', address: 'Deira, Dubai', country: 'United Arab Emirates', product: 'Vehicle spare parts (full advance)' } });
     submit(a13, 12, 'u_grace', 'br_bt');
@@ -435,11 +431,11 @@ const Seed = {
     reconcile(a14, 47, 'Bill of entry and final invoice agree with the payment.');
 
     // 15. Reconciled – Mzuzu client whose documents were handled at Lilongwe.
-    const a15 = adv({ paidDays: 160, branchId: 'br_mz', inputter: 'u_tiya', authoriser: 'u_kettie', amount: 42000, rate: 1746.3, balance: 80000000, swift: 'MT103-39102', invoice: 'PI-MZ-0866', invoiceAmount: 105000,
+    const a15 = adv({ paidDays: 160, branchId: 'br_bt', inputter: 'u_grace', authoriser: 'u_james', amount: 42000, rate: 1746.3, balance: 80000000, swift: 'MT103-39102', invoice: 'PI-MZ-0866', invoiceAmount: 105000,
       customer: { name: 'Northern Coffee Growers Co-op', account: '0041005588', accountType: 'LCY', address: 'Katoto, Mzuzu', email: 'coop@northerncoffee.test', phone: '+265 999 558 811', idType: 'BUSINESS_REG', idNumber: 'BRN-MZ-10233' },
       beneficiary: { name: 'Pinhalense Machinery Ltda', address: 'Espírito Santo do Pinhal', country: 'Brazil', product: 'Coffee pulping machine (advance 40%)' } });
-    submit(a15, 82, 'u_chiko', 'br_llw', 'Client delivered the documents at our Lilongwe branch.');
-    authorise(a15, 81, 'u_chisomo');
+    submit(a15, 82, 'u_grace', 'br_bt', 'Client delivered the documents at the branch.');
+    authorise(a15, 81, 'u_james');
     reconcile(a15, 78, 'Documents verified – goods cleared at Mwanza border.');
 
     // Customer identification for the sample clients.

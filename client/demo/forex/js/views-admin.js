@@ -573,14 +573,14 @@ const Admin = {
     const S = Store.state;
     U.$('#adm').innerHTML = `<div class="card"><div class="card-h"><h2>Demo data</h2></div><div class="card-b">
       <p>All data is kept in this browser only (localStorage, or IndexedDB when it is large, and IndexedDB for uploaded files): ${S.apps.length} applications, ${S.outbox.length} messages, ${S.audit.length} audit entries.</p>
-      <div class="btn-row"><button id="dd-export">⇩ Export all data (JSON)</button><button id="dd-load">Load test data</button><button class="btn-danger" id="dd-reset">Reset to sample data</button></div>
+      <div class="btn-row"><button id="dd-export">⇩ Export all data (JSON)</button><button class="btn-danger" id="dd-reset">Reset to sample data</button></div>
       <div id="dd-progress" class="muted" style="margin-top:10px"></div>
     </div></div>`;
     U.$('#dd-export').addEventListener('click', () => {
       const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `forex-data-${U.dayKey(Store.now())}.json`; a.click();
     });
-    U.$('#dd-load').addEventListener('click', async () => {
+    U.$("#dd-load")?.addEventListener('click', async () => {
       if (!await UI.confirm('Load test data?', '<p>About 660 test applications across all types, branches and stages, and about 40 test users, <b>replace everything in this browser</b>. Other browsers are not affected.</p><p>A <b>full backup is taken automatically first</b> (to the backup destinations – by default a download).</p>', 'Back up & load', 'btn-danger')) return;
       let bk;
       try { bk = await Backups.run('Automatic backup before loading the test data', 'MANUAL'); } catch (e) { bk = { ok: false, error: e.message }; }
