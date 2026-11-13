@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System · Oblation Brian Simbeye</title>
+    <meta name="description" content="A multi-school management system in Python and Django: fees and online payments, payroll, academics, notifications and operations, with a live demo.">
+    <meta property="og:image" content="../images/share.jpg">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a href="../index.html" class="brand" aria-label="Oblation Brian Simbeye, home"><span class="brand-name" aria-hidden="true"><span class="brand-short">OBS</span><span class="brand-full">Oblation Brian Simbeye</span></span><span class="brand-dot" aria-hidden="true">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#projects" aria-current="page">Work</a></li>
+                <li><a href="../design.html">Design</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="case-hero">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← All work</a>
+                <p class="eyebrow">Software · Education</p>
+                <h1>School Management System</h1>
+                <p class="lede">
+                    One system for running a school, or several. Records, fees and online payments, payroll,
+                    academics, notifications and daily operations, with a portal for parents, students, teachers and
+                    the bursar, and a back office for school staff.
+                </p>
+                <div class="hero-actions" style="margin-top: 1.75rem;">
+                    <a href="https://school-management-demo-fzzw.onrender.com/" class="btn btn-primary" target="_blank" rel="noopener">Try the live demo ↗</a>
+                    <a href="#demo" class="btn btn-ghost">How to use the demo</a>
+                </div>
+                <dl class="case-meta">
+                    <div><dt>Role</dt><dd>Designer &amp; developer</dd></div>
+                    <div><dt>Stack</dt><dd>Python, Django, Django REST Framework, HTMX</dd></div>
+                    <div><dt>Users</dt><dd>16 school roles plus a system administrator</dd></div>
+                    <div><dt>Defaults</dt><dd>Malawi Kwacha, multi-school, UAT and LIVE modes</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container split">
+                <div class="section-head">
+                    <p class="eyebrow">The idea</p>
+                    <h2>Bank-grade controls for a school</h2>
+                </div>
+                <div class="prose">
+                    <p>
+                        Schools handle money, children's records and staff pay, so the system borrows the controls
+                        I use in banking: <strong>maker-checker authorisation</strong> for voids, refunds and new
+                        accounts, a double-entry ledger with a trial balance, access rights by role and user, account
+                        lockout, a full audit trail, and end-of-day routines.
+                    </p>
+                    <p>
+                        Several schools share one installation but stay completely separate. A system administrator
+                        looks after the whole platform, and each school's administrators run their own school, with
+                        its own currency, branding and message templates.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">What it does</p>
+                    <h2>Everything a school office runs on</h2>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>Fees &amp; online payments</h3>
+                        <p>Fee items per term and grade, invoices, receipts, statements and late fees, with card and mobile money payments through Flutterwave, Stripe, M-Pesa and MTN.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Academics</h3>
+                        <p>Timetables with clash checks, attendance registers, a mark sheet that pastes from Excel, grading and report cards with class position.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Payroll &amp; payouts</h3>
+                        <p>Salary profiles, tax bands and payslips. HR prepares, a second person approves, and salaries are paid by transfer, mobile money or by hand.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Notifications</h3>
+                        <p>Receipts, invoices, absence alerts, results and fee reminders by SMS, email or in-app, sent by a jobs runner and retried on failure.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Operations</h3>
+                        <p>Library loans and fines, transport routes, boarding rooms, confidential clinic visits and stores that never go below zero.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Security &amp; audit</h3>
+                        <p>Two-step sign-in, account lockout, computer blocking, work queues, reports and an audit log of every change: who, what, when and from where.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="demo">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Try it yourself</p>
+                    <h2>A live demo school</h2>
+                </div>
+                <div class="prose" style="max-width: 46rem; margin-bottom: 1.5rem;">
+                    <p>
+                        The demo runs a sample school, "Demo Academy", as a test system: messages are never sent to real
+                        phones or mailboxes, and only sandbox payments work. Actions that would break the demo for
+                        others, such as changing the shared passwords or declaring go-live, are switched off, and the
+                        demo resets whenever it restarts. It's on a free server that sleeps when unused, so the first
+                        visit can take about a minute to load.
+                    </p>
+                    <p>
+                        Every account uses the password <strong><code>demo-password-123</code></strong>. On the sign-in
+                        page, open <strong>Demo accounts</strong> and click one to fill it in.
+                    </p>
+                </div>
+                <div class="table-wrap">
+                    <table class="guide-table">
+                        <thead><tr><th>Role</th><th>Sign in with</th><th>Try this</th></tr></thead>
+                        <tbody>
+                            <tr><td>School administrator</td><td><code>admin@demo.school</code></td><td>The operations dashboard, users, access rights, branding and reports</td></tr>
+                            <tr><td>School administrator</td><td><code>deputy@demo.school</code></td><td>Approve what the first administrator asks for (maker-checker)</td></tr>
+                            <tr><td>Bursar</td><td><code>bursar@demo.school</code></td><td>Bill a term, record payments, void with authorisation, view the trial balance</td></tr>
+                            <tr><td>Class teacher</td><td><code>teacher@demo.school</code></td><td>Take the register and enter marks in the mark sheet</td></tr>
+                            <tr><td>Parent</td><td><code>parent@demo.school</code></td><td>See the balance and invoices, results and messages, and try a sandbox payment</td></tr>
+                            <tr><td>System administrator</td><td><code>root@demo.school</code></td><td>The whole-platform view: schools, health and sign-in security</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section-foot">
+                    <a href="https://school-management-demo-fzzw.onrender.com/" class="btn btn-primary" target="_blank" rel="noopener">Open the demo ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="case-next" aria-label="Next project">
+                <a href="notifications.html" class="back-link" style="margin: 0;">← Customer Notification System</a>
+                <a href="unilia.html">
+                    <span class="eyebrow">Next project</span>
+                    <span class="next-title">University of Livingstonia</span>
+                </a>
+            </nav>
+        </div>
+        <div class="container">
+            <p class="names-note" role="note"><strong>Note on names:</strong> the names of people used across my projects, in mockups, demos and sample data (customers, students, staff and users), are made up or randomly generated. Any resemblance to real people is coincidental.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year">2026</span> Oblation Brian Simbeye</p>
+            <a href="#">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
