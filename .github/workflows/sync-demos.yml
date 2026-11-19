@@ -21,8 +21,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  token:
+    name: Check the sync token
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        env:
+          TOKEN: ${{ secrets.DEMO_SYNC_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
+          else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "::notice::Add the DEMO_SYNC_TOKEN secret to turn on demo syncing."; fi
+
   server-demo:
     name: ${{ matrix.name }} demo
+    needs: token
+    if: needs.token.outputs.ready == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -104,6 +119,8 @@ jobs:
 
   forex-demo:
     name: Forex demo
+    needs: token
+    if: needs.token.outputs.ready == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
