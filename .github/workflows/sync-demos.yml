@@ -1,0 +1,140 @@
+# Keeps the portfolio's demos up to date with each project's latest code on GitHub.
+#   Server demos (Render): merges the project's main branch into its demo branch, runs the project's tests,
+#   and pushes only if they pass; Render then redeploys the demo by itself.
+#   Forex demo (this site): rebuilds client/demo/forex from FX-App-Python with tools/forex_demo/build.py.
+# A merge conflict, failing tests or a failed rebuild stops that one demo's update (GitHub emails you);
+# the live demo keeps running its last good version.
+# Needs the secret DEMO_SYNC_TOKEN: a fine-grained token with Contents and Workflows read/write on
+# email_sys, school-management-system, pos-system and obrianmw.github.io, and Contents read on FX-App-Python.
+name: Sync demos with the latest code
+
+on:
+  schedule:
+    - cron: "23 * * * *"   # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-demos
+  cancel-in-progress: false
+
+jobs:
+  server-demo:
+    name: ${{ matrix.name }} demo
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Notification System
+            repo: obrianmw/email_sys
+            main: main
+          - name: School Management System
+            repo: obrianmw/school-management-system
+            main: main
+          - name: POS System
+            repo: obrianmw/pos-system
+            main: master
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          ref: demo
+          fetch-depth: 0
+          token: ${{ secrets.DEMO_SYNC_TOKEN }}
+
+      - name: Merge the latest ${{ matrix.main }} into demo
+        id: merge
+        run: |
+          git config user.name "demo-sync"
+          git config user.email "demo-sync@users.noreply.github.com"
+          git fetch origin "${{ matrix.main }}"
+          if git merge-base --is-ancestor "origin/${{ matrix.main }}" HEAD; then
+            echo "Demo already has everything on ${{ matrix.main }}."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --no-edit "origin/${{ matrix.main }}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.merge.outputs.changed == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Test (Notification System)
+        if: steps.merge.outputs.changed == 'true' && matrix.repo == 'obrianmw/email_sys'
+        run: |
+          pip install -r requirements-dev.txt
+          python -m pytest -q
+
+      - name: Test (School Management System)
+        if: steps.merge.outputs.changed == 'true' && matrix.repo == 'obrianmw/school-management-system'
+        working-directory: python-version/backend
+        run: |
+          pip install -r requirements.txt
+          export SECRET_KEY=ci-only DEBUG=True
+          export PAYMENTS_ENCRYPTION_KEY="$(python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')"
+          python manage.py test --noinput
+
+      - name: Test (POS System)
+        if: steps.merge.outputs.changed == 'true' && matrix.repo == 'obrianmw/pos-system'
+        working-directory: backend
+        run: |
+          pip install -r requirements.txt
+          python -m pytest -q
+
+      - uses: actions/setup-node@v4
+        if: steps.merge.outputs.changed == 'true' && matrix.repo == 'obrianmw/pos-system'
+        with:
+          node-version: "22"
+
+      - name: Rebuild the till for the demo (POS System)
+        if: steps.merge.outputs.changed == 'true' && matrix.repo == 'obrianmw/pos-system'
+        run: |
+          cd frontend && npm ci --no-audit --no-fund && npm run build && cd ..
+          git add -f frontend/dist
+          git diff --cached --quiet || git commit -m "Rebuild the till and back office for the demo"
+
+      - name: Publish the updated demo
+        if: steps.merge.outputs.changed == 'true'
+        run: git push origin demo
+
+  forex-demo:
+    name: Forex demo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEMO_SYNC_TOKEN }}   # so the push below redeploys the site
+
+      - uses: actions/checkout@v4
+        with:
+          repository: obrianmw/FX-App-Python
+          path: .fx
+          token: ${{ secrets.DEMO_SYNC_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild the Forex demo from the latest Prototype edition
+        run: |
+          echo "FX_SHA=$(git -C .fx rev-parse --short HEAD)" >> "$GITHUB_ENV"
+          python tools/forex_demo/build.py .fx client/demo/forex
+          python tools/update_csp.py client
+          rm -rf .fx
+
+      - name: Publish if anything changed
+        run: |
+          git config user.name "demo-sync"
+          git config user.email "demo-sync@users.noreply.github.com"
+          git add -A client/demo/forex client
+          if git diff --cached --quiet; then
+            echo "Forex demo already up to date."
+          else
+            git commit -m "Update the Forex demo from FX-App-Python ${FX_SHA}"
+            git push
+          fi
