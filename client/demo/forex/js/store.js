@@ -3,6 +3,9 @@
 /* Persistent state (localStorage, or IndexedDB once it is too large for that) + demo seed data.
    In the Spring Boot version every top-level collection here becomes a table. */
 /* Prototype only: password given to the seeded demo users (hashed on first load). Never used for admin-created users. */
+/* Administrators in the demo use their own default; raise ADMIN_PASSWORD_RESET to reset them all again. */
+const ADMIN_DEMO_PASSWORD = 'FxAdmin#2026!';
+const ADMIN_PASSWORD_RESET = 1;
 const DEMO_PASSWORD = 'Demo@2026';
 
 /* Demo users. Authorisers sit in a branch and can only authorise that branch's applications. */

@@ -63,7 +63,15 @@ const Auth = {
     const S = Store.state;
     for (const u of S.users) {
       if (!u.username) u.username = u.email;
-      if (!u.passwordHash) await this.setPassword(u, u.pendingPassword || DEMO_PASSWORD, { temporary: false });
+      if (!u.passwordHash) await this.setPassword(u, u.pendingPassword || (u.role === 'ADMIN' ? ADMIN_DEMO_PASSWORD : DEMO_PASSWORD), { temporary: false });
+    }
+    // One-off reset of every administrator's password (also ones added by an admin) to the demo default.
+    if ((S.adminPasswordReset || 0) < ADMIN_PASSWORD_RESET) {
+      const admins = S.users.filter(u => u.role === 'ADMIN');
+      for (const u of admins) await this.setPassword(u, ADMIN_DEMO_PASSWORD, { temporary: false });
+      if (admins.some(u => u.id === S.currentUserId)) S.currentUserId = null;   // signed-in administrators sign in again
+      S.adminPasswordReset = ADMIN_PASSWORD_RESET;
+      if (admins.length) Store.audit('PASSWORD_RESET', null, `Demo administrator passwords reset to the default (${admins.length} account(s))`, null, AUTH_ACTOR);
     }
     if (!S.authVersion) { S.authVersion = 1; S.currentUserId = null; }
     S.resetTokens = S.resetTokens || [];
@@ -321,7 +329,7 @@ const AuthViews = {
       </form>
       <div style="text-align:center;margin-top:12px"><a href="#/forgot">Forgot password?</a></div>
       <details class="demo-box"><summary>Prototype demo accounts</summary>
-        <p class="muted" style="margin:6px 0">All demo users share the demo password <b class="mono">${U.esc(DEMO_PASSWORD)}</b> (also in the README). Users created by the admin get a temporary password and must change it at first sign-in. The names of demo users, customers and beneficiaries are made up or randomly generated; any resemblance to real people is coincidental.</p>
+        <p class="muted" style="margin:6px 0">Administrators use <b class="mono">${U.esc(ADMIN_DEMO_PASSWORD)}</b>; all other demo users share <b class="mono">${U.esc(DEMO_PASSWORD)}</b> (also in the README). Users created by the admin get a temporary password and must change it at first sign-in. The names of demo users, customers and beneficiaries are made up or randomly generated; any resemblance to real people is coincidental.</p>
         <table><tbody>${demo.map(u => `<tr class="click" data-login="${U.esc(u.username)}"><td>${U.esc(u.name)}<br><small class="mono">${U.esc(u.username)}</small></td><td><small>${ROLES[u.role]}<br>${U.esc(UI.branchName(u.branchId))}</small></td></tr>`).join('')}</tbody></table>
       </details>`);
     const form = el.querySelector('#lg-form');
